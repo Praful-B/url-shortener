@@ -6,10 +6,11 @@ import com.url.model.dto.ShortenUrlDTO;
 import com.url.service.UrlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class urlController {
+public class UrlController {
     @Autowired
     UrlService urlService;
 
@@ -29,7 +30,8 @@ public class urlController {
     }
 
     @DeleteMapping("/shorten/{code}")
-    public HttpStatus deleteShortenUrl(@PathVariable String code){
-        return urlService.deleteUrl(code);
+    public ResponseEntity<String> deleteShortenUrl(@PathVariable String code){
+        urlService.deleteUrl(code);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
