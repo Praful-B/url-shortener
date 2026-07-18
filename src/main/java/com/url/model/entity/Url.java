@@ -4,9 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -14,16 +12,16 @@ import java.sql.Timestamp;
 import java.util.UUID;
 
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
-public class url {
+@AllArgsConstructor
+public class Url {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Id
     private UUID id;
 
     private String originalUrl;
-    private String shortenUrl;
+    private String shortenCode;
 
     private int timesCalled;
 

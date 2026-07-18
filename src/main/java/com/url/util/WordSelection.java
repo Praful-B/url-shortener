@@ -11,7 +11,7 @@ import java.util.Random;
 public class WordSelection {
     private ArrayList<String> validWords;
 
-    WordSelection() {
+    public WordSelection() {
         populateValidWords();
     }
 
