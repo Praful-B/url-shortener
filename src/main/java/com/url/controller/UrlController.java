@@ -3,6 +3,7 @@ package com.url.controller;
 
 import com.url.model.dto.LongUrlDTO;
 import com.url.model.dto.ShortenUrlDTO;
+import com.url.model.dto.UrlDTO;
 import com.url.service.UrlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,5 +34,10 @@ public class UrlController {
     public ResponseEntity<String> deleteShortenUrl(@PathVariable String code){
         urlService.deleteUrl(code);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @GetMapping("/shorten/{code}/stats")
+    public UrlDTO getUrlStats(@PathVariable String code){
+        return urlService.stats(code);
     }
 }
